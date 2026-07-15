@@ -1,0 +1,142 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+
+<!-- Projects Header -->
+
+<section class="bg-dark text-white py-5">
+    <div class="container text-center">
+
+        <h1 class="display-5 fw-bold">
+            Our Electrical Projects
+        </h1>
+
+        <p class="lead">
+            Explore our residential, commercial and power solution installations.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- Projects Cards -->
+
+<div class="container py-5">
+
+    <div class="row g-4">
+
+
+        {% for project in projects %}
+
+
+        <div class="col-md-6 col-lg-4">
+
+
+            <div class="card h-100 shadow border-0">
+
+
+                {% if project.image %}
+
+                <img 
+                    src="{{ project.image.url }}"
+                    class="card-img-top"
+                    alt="{{ project.title }}"
+                    style="height:220px; object-fit:cover;"
+                >
+
+                {% else %}
+
+                <div class="bg-secondary text-white text-center py-5">
+                    No Image Available
+                </div>
+
+                {% endif %}
+
+
+
+                <div class="card-body">
+
+
+                    <h4 class="fw-bold">
+                        {{ project.title }}
+                    </h4>
+
+
+
+                    <p class="text-muted">
+                        {{ project.description }}
+                    </p>
+
+
+
+                    {% if project.location %}
+
+                    <p class="mb-2">
+
+                        <strong>
+                            <i class="bi bi-geo-alt"></i>
+                            Location:
+                        </strong>
+
+                        {{ project.location }}
+
+                    </p>
+
+                    {% endif %}
+
+
+
+                    {% if project.completed_date %}
+
+                    <p class="mb-0">
+
+                        <strong>
+                            Completed:
+                        </strong>
+
+                        {{ project.completed_date|date:"F Y" }}
+
+                    </p>
+
+                    {% endif %}
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        {% empty %}
+
+
+        <div class="col-12 text-center">
+
+
+            <h3>
+                No projects available yet.
+            </h3>
+
+
+            <p>
+                New completed projects will appear here.
+            </p>
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}

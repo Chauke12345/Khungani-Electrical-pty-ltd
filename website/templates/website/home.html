@@ -1,0 +1,300 @@
+{% extends "website/base.html" %}
+
+{% block title %}
+Home | Khungani Electrical
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- HERO -->
+
+<section class="position-relative text-white">
+
+    <div class="bg-dark p-5 text-center">
+
+        <div class="container py-5">
+
+            <h1 class="display-3 fw-bold">
+                Reliable Electrical Solutions
+            </h1>
+
+            <p class="lead mt-3">
+                Residential, Commercial & Solar Power Installations
+            </p>
+
+
+            <div class="mt-4">
+
+                <a href="{% url 'contact' %}"
+                   class="btn btn-warning btn-lg me-2">
+                    Get A Quote
+                </a>
+
+
+                <a href="{% url 'services' %}"
+                   class="btn btn-outline-light btn-lg">
+                    Our Services
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- TRUST SECTION -->
+
+<section class="container py-5">
+
+
+<div class="row text-center g-4">
+
+
+<div class="col-md-4">
+
+<div class="p-4 shadow rounded">
+
+<h2>⚡</h2>
+
+<h4>
+Expert Electrical Work
+</h4>
+
+<p>
+Safe and professional installations for homes and businesses.
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-4">
+
+<div class="p-4 shadow rounded">
+
+<h2>☀️</h2>
+
+<h4>
+Solar Solutions
+</h4>
+
+<p>
+Backup power and solar systems designed for reliability.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+<div class="col-md-4">
+
+<div class="p-4 shadow rounded">
+
+<h2>🛠</h2>
+
+<h4>
+Quality Service
+</h4>
+
+<p>
+Dependable workmanship with safety as a priority.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- SERVICES -->
+
+
+<section class="bg-light py-5">
+
+
+<div class="container">
+
+
+<h2 class="text-center fw-bold mb-5">
+Our Services
+</h2>
+
+
+
+<div class="row g-4">
+
+
+{% for service in services %}
+
+
+<div class="col-md-4">
+
+
+<div class="card h-100 border-0 shadow">
+
+
+{% if service.image %}
+
+<img src="{{ service.image.url }}"
+     class="card-img-top"
+     style="height:230px;object-fit:cover;">
+
+{% endif %}
+
+
+
+<div class="card-body">
+
+<h4 class="fw-bold">
+{{service.name}}
+</h4>
+
+
+<p>
+{{service.description|truncatewords:20}}
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- PROJECTS -->
+
+
+<section class="container py-5">
+
+
+<h2 class="text-center fw-bold mb-5">
+Recent Projects
+</h2>
+
+
+<div class="row g-4">
+
+
+{% for project in projects %}
+
+
+<div class="col-md-4">
+
+
+<div class="card shadow border-0">
+
+
+{% if project.image %}
+
+<img src="{{project.image.url}}"
+class="card-img-top"
+style="height:230px;object-fit:cover;">
+
+{% endif %}
+
+
+
+<div class="card-body">
+
+<h5>
+{{project.title}}
+</h5>
+
+<p>
+{{project.description|truncatewords:15}}
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- CTA -->
+
+
+<section class="bg-warning py-5">
+
+
+<div class="container text-center">
+
+
+<h2 class="fw-bold">
+Need Electrical Assistance?
+</h2>
+
+
+<p class="fs-5">
+Contact Khungani Electrical today.
+</p>
+
+
+<a href="{% url 'contact' %}"
+class="btn btn-dark btn-lg">
+
+Request A Quote
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "website/base.html" %}
+
+
+{% block content %}
+
+
+<div class="container py-5">
+
+
+    <h1 class="text-center mb-5">
+        Our Electrical Services
+    </h1>
+
+
+    <div class="row">
+
+
+        {% for service in services %}
+
+
+        <div class="col-md-6 col-lg-4 mb-4">
+
+
+            <div class="card h-100 shadow">
+
+
+                {% if service.image %}
+
+                <img
+                    src="{{ service.image.url }}"
+                    class="card-img-top"
+                    alt="{{ service.name }}"
+                >
+
+                {% endif %}
+
+
+
+                <div class="card-body">
+
+
+                    <h4 class="card-title">
+                        {{ service.name }}
+                    </h4>
+
+
+                    <p class="card-text">
+                        {{ service.description }}
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        {% empty %}
+
+
+        <div class="text-center">
+
+            <h3>
+                No services available yet.
+            </h3>
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}
