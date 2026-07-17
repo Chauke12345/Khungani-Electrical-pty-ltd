@@ -18,6 +18,9 @@ Production-ready for Render.
 from pathlib import Path
 import os
 import dj_database_url
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ======================================================
 # BASE DIRECTORY
@@ -172,7 +175,6 @@ STATICFILES_STORAGE = (
 # ======================================================
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
 
 # ======================================================
 # DEFAULT PRIMARY KEY
