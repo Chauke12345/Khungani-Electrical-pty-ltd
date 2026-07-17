@@ -8,10 +8,11 @@ class Service(models.Model):
     description = models.TextField()
 
     image = models.ImageField(
-        upload_to="services/",
-        blank=True,
-        null=True
-    )
+    upload_to="services/",
+    max_length=255,
+    blank=True,
+    null=True
+)
 
     created_at = models.DateTimeField(
         auto_now_add=True
@@ -34,10 +35,11 @@ class Project(models.Model):
     )
 
     image = models.ImageField(
-        upload_to="projects/",
-        blank=True,
-        null=True
-    )
+    upload_to="projects/",
+    max_length=255,
+    blank=True,
+    null=True
+)
 
     completed_date = models.DateField(
         blank=True,
@@ -64,8 +66,9 @@ class Gallery(models.Model):
     )
 
     image = models.ImageField(
-        upload_to="gallery/"
-    )
+    upload_to="gallery/",
+    max_length=255
+     )
 
     category = models.CharField(
         max_length=50
