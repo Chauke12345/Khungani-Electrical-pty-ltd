@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Service, Project
+from .models import Service, Project, Gallery
 
 
 
@@ -64,3 +64,18 @@ def projects(request):
 
 def contact(request):
     return render(request, "website/contact.html")
+
+
+def gallery(request):
+
+    galleries = Gallery.objects.all().order_by("-completed_date")
+
+    context = {
+        "galleries": galleries,
+    }
+
+    return render(
+        request,
+        "website/gallery.html",
+        context
+    )

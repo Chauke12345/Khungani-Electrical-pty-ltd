@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Service, Project
+from .models import Gallery
 
 
 @admin.register(Service)
@@ -19,3 +20,13 @@ class ProjectAdmin(admin.ModelAdmin):
         "location",
         "completed_date",
     )
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = (
+        "title",
+        "category",
+        "completed_date",
+    )
+    list_filter = ("category",)
+    search_fields = ("title", "description")
