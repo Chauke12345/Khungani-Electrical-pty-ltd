@@ -1,0 +1,66 @@
+{% extends "website/base.html" %}
+
+{% block title %}
+Gallery | Khungani Electrical
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1 class="text-center mb-4">
+        Our Projects Gallery
+    </h1>
+
+
+    <div class="row">
+
+        {% for gallery in galleries %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card h-100 shadow">
+
+                {% if gallery.image %}
+                <img 
+                    src="{{ gallery.image.url }}" 
+                    class="card-img-top"
+                    alt="{{ gallery.title }}"
+                >
+                {% endif %}
+
+
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        {{ gallery.title }}
+                    </h5>
+
+                    <p class="card-text">
+                        {{ gallery.description }}
+                    </p>
+
+                    <span class="badge bg-primary">
+                        {{ gallery.category }}
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <p class="text-center">
+            No gallery projects available yet.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}
